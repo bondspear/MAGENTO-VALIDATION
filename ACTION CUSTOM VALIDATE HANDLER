@@ -1,0 +1,32 @@
+namespace VendorName\ModuleName\Controller\Validator;
+
+use Magento\Framework\App\Action\Action;
+use Magento\Framework\App\Action\Context;
+use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterface;
+use Magento\Framework\App\RequestInterface;
+use Magento\Framework\Controller\Result\JsonFactory;
+
+class Handler extends Action implements HttpPostActionInterface
+{
+    protected $resultJsonFactory;
+    protected $request;
+
+    public function __construct(RequestInterface $request, Context $context, JsonFactory $resultJsonFactory)
+    {
+        $this->request = $request;
+        $this->resultJsonFactory = $resultJsonFactory;
+        return parent::__construct($context);
+    }
+
+    public function execute()
+    {
+        $value = $this->request->getParam('value');
+
+        // hanlde you $value here and set boll val to $result
+
+        $resultJson = $this->resultJsonFactory->create();
+        return $resultJson->setData([
+            'result' => $result
+        ]);
+    }
+}
