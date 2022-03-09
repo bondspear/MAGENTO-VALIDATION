@@ -1,0 +1,29 @@
+    public function validationRules()
+    {
+        /**
+         * validation rules /lib/web/mage/validation.js
+         */
+
+        return json_encode([
+                "VendorName_ModuleName/js/customValidationRule" => [
+                    "url" => $this->request->getDistroBaseUrl() . "vendorname_modulename/validator/handler"
+                ],
+                "validation" => [
+                    "rules" => [
+                        "trigger1" => [
+                            "validate-no-empty" => true,
+                            "integer" => true
+                        ],
+                        "trigger2" => [
+                            "validate-no-empty" => true,
+                            "customValidationRule" => true
+                        ]
+                    ],
+                    "messages" => [
+                        "trigger2" => [
+                            "validate-no-empty" => "custom message"
+                        ]
+                    ]
+                ]
+            ]);
+    }
