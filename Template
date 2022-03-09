@@ -1,0 +1,5 @@
+<form class="form"  method="post" data-mage-init='<?= $block->validationRules() ?>'>
+    <input name="trigger1" type="text" />
+    
+    <input name="trigger2" type="text" />
+</form>
